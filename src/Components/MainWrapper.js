@@ -8,13 +8,13 @@ import dayBgMobile from "../images/mobile/bg-image-daytime.jpg";
 import nightBgMobile from "../images/mobile/bg-image-nighttime.jpg";
 
 export const MainWrapper = styled.main`
-  min-height: 80rem;
+  background: ${({ hour }) =>
+    hour >= 7 && hour < 19 ? `url(${dayBgDesktop})` : `url(${nightBgDesktop})`};
+  max-height: 80rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  background: ${({ hour }) =>
-    hour >= 7 && hour < 19 ? `url(${dayBgDesktop})` : `url(${nightBgDesktop})`};
+  overflow: hidden;
 
   @media screen and (max-width: 768px) {
     background: ${({ hour }) =>
