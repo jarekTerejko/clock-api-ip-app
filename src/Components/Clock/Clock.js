@@ -7,11 +7,22 @@ import {
   ClockCityParagraph,
   ClockGreetingParagraph,
   ClockSunMoonIcon,
+  ClockBtn,
+  ClockBtnArrow,
+  ClockBtnText,
 } from "./ClockElements";
 import SunIcon from "../../images/desktop/icon-sun.svg";
 import MoonIcon from "../../images/desktop/icon-moon.svg";
+import ArrowIcon from "../../images/desktop/icon-arrow-up.svg";
 
-const Clock = ({ now, apiTwoData, apiOneData, isLoading }) => {
+const Clock = ({
+  now,
+  apiTwoData,
+  apiOneData,
+  isLoading,
+  handleBtnClick,
+  detailsVisble,
+}) => {
   // console.log(now, apiTwoData, apiOneData);
 
   const hour = now.getHours();
@@ -36,7 +47,7 @@ const Clock = ({ now, apiTwoData, apiOneData, isLoading }) => {
   } else {
     return (
       <>
-        <ClockWrapper>
+        <ClockWrapper detailsVisble={detailsVisble}>
           <ClockGreetingParagraph>
             <ClockSunMoonIcon
               src={hour >= 5 && hour < 19 ? SunIcon : MoonIcon}
@@ -59,6 +70,10 @@ const Clock = ({ now, apiTwoData, apiOneData, isLoading }) => {
             In {apiOneData ? apiOneData.city : ""},{" "}
             {apiOneData ? apiOneData.country_code : ""}
           </ClockCityParagraph>
+          <ClockBtn onClick={handleBtnClick}>
+            <ClockBtnText>{detailsVisble ? "Less" : "More"}</ClockBtnText>
+            <ClockBtnArrow src={ArrowIcon} detailsVisble={detailsVisble} />
+          </ClockBtn>
         </ClockWrapper>
       </>
     );

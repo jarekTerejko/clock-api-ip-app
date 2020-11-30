@@ -3,6 +3,8 @@ import Loader from "./Components/Loader/Loader";
 import Clock from "./Components/Clock/Clock";
 import { MainWrapper } from "./Components/MainWrapper";
 import { Container } from "./Components/Container";
+import Quotation from "./Components/Quotation";
+import Details from "./Components/Details";
 
 const App = () => {
   const apiOneEndPoint = "https://freegeoip.app/json/";
@@ -12,6 +14,12 @@ const App = () => {
   const [apiTwoData, setApiTwoData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [now, setNow] = useState(new Date());
+const [detailsVisble, setDetailsVisble] = useState(false)
+
+const handleBtnClick = () => {
+  setDetailsVisble(!detailsVisble)
+  setDetailsVisble(!detailsVisble)
+}
 
   const getApiOneData = async () => {
     try {
@@ -99,14 +107,22 @@ const App = () => {
       <>
         <MainWrapper hour={now.getHours()}>
           <Container>
+            <Quotation detailsVisble={detailsVisble} />
             <Clock
               now={now}
               apiOneData={apiOneData}
               apiTwoData={apiTwoData}
               isLoading={isLoading}
+              handleBtnClick={handleBtnClick}
+              detailsVisble={detailsVisble}
             />
+            
           </Container>
+          <Details hour={now.getHours()} detailsVisble={detailsVisble} apiTwoData={apiTwoData} />
         </MainWrapper>
+        {/* <Details hour={now.getHours()} detailsVisble={detailsVisble} apiTwoData={apiTwoData} /> */}
+
+
       </>
     );
   }
