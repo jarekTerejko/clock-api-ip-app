@@ -14,25 +14,36 @@ const App = () => {
   const [apiTwoData, setApiTwoData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [now, setNow] = useState(new Date());
-const [detailsVisble, setDetailsVisble] = useState(false)
+  const [detailsVisble, setDetailsVisble] = useState(false);
+  const [quotes, setQuotes] = useState([]);
 
-const handleBtnClick = () => {
-  setDetailsVisble(!detailsVisble)
-  setDetailsVisble(!detailsVisble)
-}
+  const handleBtnClick = () => {
+    setDetailsVisble(!detailsVisble);
+    setDetailsVisble(!detailsVisble);
+  };
+
+  const getQuotes = async () => {
+    try {
+      const response = await fetch("https://type.fit/api/quotes");
+      const data = await response.json();
+
+      setQuotes(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getApiOneData = async () => {
     try {
       const response = await fetch(apiOneEndPoint);
       const data = await response.json();
 
-      console.log(data);
-
       setApiOneData(data);
     } catch (error) {
       console.log(error);
     }
   };
+
   const getApiTwoData = async () => {
     try {
       const response = await fetch(apiTwoEndPoint);
@@ -55,13 +66,14 @@ const handleBtnClick = () => {
       const responseDataTwo = await fetch(apiTwoEndPoint);
       const dataTwo = await responseDataTwo.json();
 
-      console.log(dataTwo);
-      console.log(dataOne);
+      // console.log(dataTwo);
+      // console.log(dataOne);
 
       setApiOneData(dataOne);
       setApiTwoData(dataTwo);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
     setIsLoading(false);
   };
@@ -85,10 +97,7 @@ const handleBtnClick = () => {
 
   useEffect(() => {
     getData();
-
-    // return () => {
-    //   cleanup
-    // }
+    getQuotes();
   }, []);
 
   useEffect(() => {
@@ -107,7 +116,7 @@ const handleBtnClick = () => {
       <>
         <MainWrapper hour={now.getHours()}>
           <Container>
-            <Quotation detailsVisble={detailsVisble} />
+            <Quotation quotes={quotes} detailsVisble={detailsVisble} />
             <Clock
               now={now}
               apiOneData={apiOneData}
@@ -116,13 +125,14 @@ const handleBtnClick = () => {
               handleBtnClick={handleBtnClick}
               detailsVisble={detailsVisble}
             />
-            
           </Container>
-          <Details hour={now.getHours()} detailsVisble={detailsVisble} apiTwoData={apiTwoData} />
+          <Details
+            hour={now.getHours()}
+            detailsVisble={detailsVisble}
+            apiTwoData={apiTwoData}
+          />
         </MainWrapper>
         {/* <Details hour={now.getHours()} detailsVisble={detailsVisble} apiTwoData={apiTwoData} /> */}
-
-
       </>
     );
   }
