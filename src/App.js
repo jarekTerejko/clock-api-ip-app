@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loader from "./Components/Loader/Loader";
-import Clock from "./Components/Clock/Clock";
+import Clock from "./Components/Clock";
 import { MainWrapper } from "./Components/MainWrapper";
 import { Container } from "./Components/Container";
 import Quotation from "./Components/Quotation";
@@ -132,7 +132,6 @@ const App = () => {
             apiTwoData={apiTwoData}
           />
         </MainWrapper>
-        {/* <Details hour={now.getHours()} detailsVisble={detailsVisble} apiTwoData={apiTwoData} /> */}
       </>
     );
   }

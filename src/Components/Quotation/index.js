@@ -20,14 +20,14 @@ const Quotation = ({ detailsVisble, quotes }) => {
   useEffect(() => {
     getRandomQuotation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [quotes]);
 
   return (
     <QuotationWrapper detailsVisble={detailsVisble}>
       {quotation ? (
         <>
           <QuotationText>{quotation.text}</QuotationText>
-          <QuotationAuthor>{quotation.author}</QuotationAuthor>
+          <QuotationAuthor>{!quotation.author ? "Author unknown"  : quotation.author}</QuotationAuthor>
         </>
       ) : null}
       <QuotationBtn>

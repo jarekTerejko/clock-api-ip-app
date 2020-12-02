@@ -12,7 +12,7 @@ const Details = ({ apiTwoData, detailsVisble, hour }) => {
   return (
     <DetailsWrapper detailsVisble={detailsVisble} hour={hour}>
       <DetailsCols>
-        <DetailsCol>
+        <DetailsCol hour={hour}>
           <DetailsRow>
             <DetailsName hour={hour}>Current timezone</DetailsName>
             <DetailsValue hour={hour}>

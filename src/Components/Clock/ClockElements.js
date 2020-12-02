@@ -10,6 +10,18 @@ export const ClockWrapper = styled.div`
   transition: 0.5s;
   transform: ${({ detailsVisble }) =>
     detailsVisble ? "translateY(-100%)" : "translateY(0)"};
+
+  @media screen and (max-width: 768px) {
+    min-height: 51.2rem;
+  }
+
+  @media screen and (max-width: 375px) {
+    transform: ${({ detailsVisble }) =>
+      detailsVisble ? "translateY(-22.7rem)" : "translateY(0)"};
+    min-height: 44rem;
+    padding: 7rem 0 3rem 0;
+    display: block;
+  }
 `;
 
 export const ClockGreetingParagraph = styled.p`
@@ -60,6 +72,7 @@ export const ClockCityParagraph = styled.p`
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 1px;
+  margin-bottom: 5rem;
 `;
 
 export const ClockBtn = styled.button`
@@ -74,14 +87,20 @@ export const ClockBtn = styled.button`
   cursor: pointer;
   border: none;
   font-family: "Inter", sans-serif;
+
+  @media screen and (max-width: 768px) {
+    position: initial;
+    align-self: flex-start;
+  }
 `;
 
 export const ClockBtnText = styled.span`
-  margin-right: 2rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 1.4rem;
-  padding-left: 2rem;
+  padding: 0 2rem;
+  width: 10rem;
+  text-align: center;
 `;
 
 export const ClockBtnArrow = styled.img`

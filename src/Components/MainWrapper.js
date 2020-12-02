@@ -8,8 +8,10 @@ import dayBgMobile from "../images/mobile/bg-image-daytime.jpg";
 import nightBgMobile from "../images/mobile/bg-image-nighttime.jpg";
 
 export const MainWrapper = styled.main`
-  background: ${({ hour }) =>
-    hour >= 7 && hour < 19 ? `url(${dayBgDesktop})` : `url(${nightBgDesktop})`};
+  background-image: ${({ hour }) =>
+    hour >= 7 && hour < 19
+      ? `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${dayBgDesktop})`
+      : `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${nightBgDesktop})`};
   max-height: 80rem;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,16 +19,22 @@ export const MainWrapper = styled.main`
   overflow: hidden;
 
   @media screen and (max-width: 768px) {
+    max-height: 102.4rem;
     background: ${({ hour }) =>
-      hour >= 7 && hour < 19 ? `url(${dayBgTablet})` : `url(${nightBgTablet})`};
+      hour >= 7 && hour < 19
+        ? `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${dayBgTablet})`
+        : `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${nightBgTablet})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
 
   @media screen and (max-width: 375px) {
+    max-height: 66.7rem;
     background: ${({ hour }) =>
-      hour >= 7 && hour < 19 ? `url(${dayBgMobile})` : `url(${nightBgMobile})`};
+      hour >= 7 && hour < 19
+        ? `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${dayBgMobile})`
+        : `linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1)), url(${nightBgMobile})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
