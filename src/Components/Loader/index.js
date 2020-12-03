@@ -1,10 +1,11 @@
 import React from "react";
+import { ClockBg, CLockFace } from "./LoaderElements";
 
 const Loader = () => {
   return (
-    <div className="clock-container">
-      <div className="clock"></div>
-    </div>
+    <ClockBg>
+      <CLockFace />
+    </ClockBg>
   );
 };
 

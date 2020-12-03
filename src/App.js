@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Loader from "./Components/Loader/Loader";
+import Loader from "./Components/Loader";
 import Clock from "./Components/Clock";
 import { MainWrapper } from "./Components/MainWrapper";
 import { Container } from "./Components/Container";
