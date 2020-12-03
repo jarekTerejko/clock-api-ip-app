@@ -8,7 +8,7 @@ import Details from "./Components/Details";
 
 const App = () => {
   const apiOneEndPoint = "https://freegeoip.app/json/";
-  const apiTwoEndPoint = "http://worldtimeapi.org/api/ip";
+  const apiTwoEndPoint = "https://worldtimeapi.org/api/ip";
 
   const [apiOneData, setApiOneData] = useState(null);
   const [apiTwoData, setApiTwoData] = useState(null);
@@ -23,7 +23,9 @@ const App = () => {
 
   const getQuotes = async () => {
     try {
-      const response = await fetch("https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes");
+      const response = await fetch(
+        "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes"
+      );
       const data = await response.json();
 
       setQuotes(data);
@@ -34,7 +36,9 @@ const App = () => {
 
   const getApiOneData = async () => {
     try {
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/${apiOneEndPoint}`);
+      const response = await fetch(
+        `https://cors-anywhere.herokuapp.com/${apiOneEndPoint}`
+      );
       const data = await response.json();
 
       setApiOneData(data);
@@ -45,7 +49,9 @@ const App = () => {
 
   const getApiTwoData = async () => {
     try {
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/${apiTwoEndPoint}`);
+      const response = await fetch(
+        `https://cors-anywhere.herokuapp.com/${apiTwoEndPoint}`
+      );
       const data = await response.json();
 
       setApiTwoData(data);
