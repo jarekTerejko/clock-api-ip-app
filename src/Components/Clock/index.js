@@ -23,19 +23,15 @@ const Clock = ({
   handleBtnClick,
   detailsVisble,
 }) => {
-  // console.log(now, apiTwoData, apiOneData);
 
   const hour = now.getHours();
   const minute = now.getMinutes();
   const second = now.getSeconds();
-  // console.log(hour);
-  // console.log(minute);
-  // console.log(second);
 
   const chooseGreeting = () => {
     if (hour >= 5 && hour < 12) {
       return "Morning";
-    } else if (hour > 12 && hour < 17) {
+    } else if (hour >= 12 && hour < 17) {
       return "Afternoon";
     } else {
       return "Evening";
