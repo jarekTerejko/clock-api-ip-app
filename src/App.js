@@ -19,12 +19,11 @@ const App = () => {
 
   const handleBtnClick = () => {
     setDetailsVisble(!detailsVisble);
-    setDetailsVisble(!detailsVisble);
   };
 
   const getQuotes = async () => {
     try {
-      const response = await fetch("https://type.fit/api/quotes");
+      const response = await fetch("https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes");
       const data = await response.json();
 
       setQuotes(data);
@@ -35,7 +34,7 @@ const App = () => {
 
   const getApiOneData = async () => {
     try {
-      const response = await fetch(apiOneEndPoint);
+      const response = await fetch(`https://cors-anywhere.herokuapp.com/${apiOneEndPoint}`);
       const data = await response.json();
 
       setApiOneData(data);
@@ -46,10 +45,8 @@ const App = () => {
 
   const getApiTwoData = async () => {
     try {
-      const response = await fetch(apiTwoEndPoint);
+      const response = await fetch(`https://cors-anywhere.herokuapp.com/${apiTwoEndPoint}`);
       const data = await response.json();
-
-      console.log(data);
 
       setApiTwoData(data);
     } catch (error) {
