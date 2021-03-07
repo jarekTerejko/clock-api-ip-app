@@ -23,38 +23,9 @@ const App = () => {
 
   const getQuotes = async () => {
     try {
-      const response = await fetch(
-        "https://cors-anywhere.herokuapp.com/https://type.fit/api/quotes"
-      );
+      const response = await fetch("./quotes.json");
       const data = await response.json();
-
       setQuotes(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getApiOneData = async () => {
-    try {
-      const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/${apiOneEndPoint}`
-      );
-      const data = await response.json();
-
-      setApiOneData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getApiTwoData = async () => {
-    try {
-      const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/${apiTwoEndPoint}`
-      );
-      const data = await response.json();
-
-      setApiTwoData(data);
     } catch (error) {
       console.log(error);
     }
@@ -91,10 +62,10 @@ const App = () => {
     // console.log(minute);
     // console.log(second);
 
-    if ((hour === 0) & (minute === 0) & (second === 0)) {
-      getApiOneData();
-      getApiTwoData();
-      console.log("new date");
+    // fetch new data for new date
+    if (hour === 0 && minute === 0 && second === 0) {
+      getData();
+      // console.log("new date");
     }
   };
 
@@ -112,11 +83,10 @@ const App = () => {
     };
   });
 
-  if (isLoading) {
-    return <Loader />;
-  } else {
-    return (
-      <>
+  return (
+    <>
+      {isLoading ? <Loader /> : null}
+      {apiOneData && apiTwoData && quotes ? (
         <MainWrapper hour={now.getHours()}>
           <Container>
             <Quotation quotes={quotes} detailsVisble={detailsVisble} />
@@ -135,9 +105,9 @@ const App = () => {
             apiTwoData={apiTwoData}
           />
         </MainWrapper>
-      </>
-    );
-  }
+      ) : null}
+    </>
+  );
 };
 
 export default App;

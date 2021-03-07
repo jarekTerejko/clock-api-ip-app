@@ -20,20 +20,22 @@ const Quotation = ({ detailsVisble, quotes }) => {
   useEffect(() => {
     getRandomQuotation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [quotes]);
+  }, []);
 
   return (
-    <QuotationWrapper detailsVisble={detailsVisble}>
+    <>
       {quotation ? (
-        <>
+        <QuotationWrapper detailsVisble={detailsVisble}>
           <QuotationText>{quotation.text}</QuotationText>
-          <QuotationAuthor>{!quotation.author ? "Author unknown"  : quotation.author}</QuotationAuthor>
-        </>
+          <QuotationAuthor>
+            {!quotation.author ? "Author unknown" : quotation.author}
+          </QuotationAuthor>
+          <QuotationBtn>
+            <QuotationBtnIcon src={RefreshIcon} onClick={getRandomQuotation} />
+          </QuotationBtn>
+        </QuotationWrapper>
       ) : null}
-      <QuotationBtn>
-        <QuotationBtnIcon src={RefreshIcon} onClick={getRandomQuotation} />
-      </QuotationBtn>
-    </QuotationWrapper>
+    </>
   );
 };
 
