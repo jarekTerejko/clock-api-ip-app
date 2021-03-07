@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   QuotationWrapper,
   QuotationText,
@@ -9,18 +9,14 @@ import {
 import RefreshIcon from "../../images/desktop/icon-refresh.svg";
 
 const Quotation = ({ detailsVisble, quotes }) => {
-  const [quotation, setQuotation] = useState(null);
+  const randomNum = Math.floor(Math.random() * quotes.length + 1);
+
+  const [quotation, setQuotation] = useState(quotes[randomNum]);
 
   const getRandomQuotation = () => {
-    const randomNum = Math.floor(Math.random() * quotes.length + 1);
     const quotation = quotes[randomNum];
     setQuotation(quotation);
   };
-
-  useEffect(() => {
-    getRandomQuotation();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
