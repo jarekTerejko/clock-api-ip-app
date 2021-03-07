@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import dayBgDesktop from "../images/desktop/bg-image-daytime.jpg";
 import nightBgDesktop from "../images/desktop/bg-image-nighttime.jpg";
@@ -6,6 +6,15 @@ import dayBgTablet from "../images/tablet/bg-image-daytime.jpg";
 import nightBgTablet from "../images/tablet/bg-image-nighttime.jpg";
 import dayBgMobile from "../images/mobile/bg-image-daytime.jpg";
 import nightBgMobile from "../images/mobile/bg-image-nighttime.jpg";
+
+const show = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+   opacity: 1;
+  }
+`;
 
 export const MainWrapper = styled.main`
   background-image: ${({ hour }) =>
@@ -17,6 +26,8 @@ export const MainWrapper = styled.main`
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  opacity: 0;
+  animation: ${show} 0.3s linear forwards 0.1s;
 
   @media screen and (max-width: 768px) {
     max-height: 102.4rem;
