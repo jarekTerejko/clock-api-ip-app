@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   QuotationWrapper,
   QuotationText,
@@ -9,18 +9,25 @@ import {
 import RefreshIcon from "../../images/desktop/icon-refresh.svg";
 
 const Quotation = ({ detailsVisble, quotes }) => {
-  const randomNum = Math.floor(Math.random() * quotes.length + 1);
-
-  const [quotation, setQuotation] = useState(quotes[randomNum]);
+  const [quotation, setQuotation] = useState({});
 
   const getRandomQuotation = () => {
-    const quotation = quotes[randomNum];
-    setQuotation(quotation);
+    const randomNum = Math.floor(Math.random() * quotes.length + 1);
+    const newQuotation = quotes[randomNum];
+    setQuotation(newQuotation);
   };
+
+  useEffect(() => {
+    getRandomQuotation();
+    // return () => {
+    //   cleanup
+    // }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
-      {quotation ? (
+      {quotation && quotes ? (
         <QuotationWrapper detailsVisble={detailsVisble}>
           <QuotationText>{quotation.text}</QuotationText>
           <QuotationAuthor>

@@ -23,7 +23,12 @@ const App = () => {
 
   const getQuotes = async () => {
     try {
-      const response = await fetch("./quotes.json");
+      const response = await fetch("./quotes.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
       const data = await response.json();
       setQuotes(data);
     } catch (error) {
