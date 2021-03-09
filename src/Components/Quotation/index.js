@@ -7,9 +7,11 @@ import {
   QuotationBtnIcon,
 } from "./QuotationElements";
 import RefreshIcon from "../../images/desktop/icon-refresh.svg";
+import { quotes } from "../../quotes";
 
-const Quotation = ({ detailsVisble, quotes }) => {
-  const [quotation, setQuotation] = useState({});
+
+const Quotation = ({ detailsVisble }) => {
+  const [quotation, setQuotation] = useState(null);
 
   const getRandomQuotation = () => {
     const randomNum = Math.floor(Math.random() * quotes.length + 1);

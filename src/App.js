@@ -15,25 +15,9 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [now, setNow] = useState(new Date());
   const [detailsVisble, setDetailsVisble] = useState(false);
-  const [quotes, setQuotes] = useState([]);
 
   const handleBtnClick = () => {
     setDetailsVisble(!detailsVisble);
-  };
-
-  const getQuotes = async () => {
-    try {
-      const response = await fetch("./quotes.json", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const data = await response.json();
-      setQuotes(data);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const getData = async () => {
@@ -76,7 +60,6 @@ const App = () => {
 
   useEffect(() => {
     getData();
-    getQuotes();
   }, []);
 
   useEffect(() => {
@@ -91,10 +74,10 @@ const App = () => {
   return (
     <>
       {isLoading ? <Loader /> : null}
-      {apiOneData && apiTwoData && quotes ? (
+      {apiOneData && apiTwoData ? (
         <MainWrapper hour={now.getHours()}>
           <Container>
-            <Quotation quotes={quotes} detailsVisble={detailsVisble} />
+            <Quotation detailsVisble={detailsVisble} />
             <Clock
               now={now}
               apiOneData={apiOneData}
