@@ -23,7 +23,6 @@ const Clock = ({
   handleBtnClick,
   detailsVisble,
 }) => {
-
   const hour = now.getHours();
   const minute = now.getMinutes();
   const second = now.getSeconds();
@@ -63,8 +62,9 @@ const Clock = ({
             </ClockInnerWrapper>
           </ClockHeading>
           <ClockCityParagraph>
-            In {apiOneData ? apiOneData.city : ""},{" "}
-            {apiOneData ? apiOneData.country_code : ""}
+            {!apiOneData.city
+              ? `In ${apiOneData.country_name}`
+              : `In ${apiOneData.city}, ${apiOneData.country_code}`}
           </ClockCityParagraph>
           <ClockBtn onClick={handleBtnClick}>
             <ClockBtnText>{detailsVisble ? "Less" : "More"}</ClockBtnText>
